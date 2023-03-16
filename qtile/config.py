@@ -44,7 +44,7 @@ terminal = "kitty"
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
     subprocess.Popen([home])
 
 
@@ -98,39 +98,43 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+widget_separator = widget.Sep(
+        linewidth = 1,
+        padding = 10,
+        )
+bar_widgets = [
+        widget.CurrentLayout(),
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Chord(
+            chords_colors={
+                "launch": ("#ff0000", "#ffffff"),
+                },
+            name_transform=lambda name: name.upper(),
+            ),
+        # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        # widget.StatusNotifier(),
+        widget.Volume(),
+        widget_separator,
+        widget.Battery(format='{char} {percent:2.0%}'),
+        widget_separator,
+        widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        widget_separator,
+        widget.Systray(),
+        ]
+
+
 screens = [
     Screen(
-        wallpaper="./wallpapers/anime.jpg",
+        wallpaper="~/.config/qtile/wallpapers/anime.jpg",
         wallpaper_mode="fill",
         bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Volume(),
-                widget.Bluetooth(
-                    hci="/dev_95_05_BB_21_DD_D8"
-                    ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.BatteryIcon(),
-                widget.Battery(
-                    format='{char} {percent:2.0%}'
-                    ),
-                widget.Systray(),
-            ],
+            bar_widgets,
             24,
-            background="#4c566aaf"
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background="#3b4242af",
+             border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+             border_color=["2e3440", "2e3440", "2e3440", "2e3440"]  # Borders are magenta
         ),
     ),
 ]
