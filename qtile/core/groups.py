@@ -2,6 +2,7 @@ from libqtile.config import Group, Key
 from libqtile.lazy import lazy
 from typing import Callable
 from libqtile.core.manager import Qtile
+from libqtile import layout
 
 from core import bar
 from core.keys import keys, mod
@@ -13,9 +14,9 @@ groups_attr = [
     {"label": "", "name": "1", },
     {"label": "", "name": "2", },
     {"label": "", "name": "3", },
-    {"label": "", "name": "8", },
-    {"label": "", "name": "9", },
-    {"label": "", "name": "0", },
+    {"label": "", "name": "8", "layouts": [layout.MonadWide()]},
+    {"label": "", "name": "9", "layouts": [layout.MonadWide()]},
+    {"label": "", "name": "0", "layouts": [layout.MonadWide()]},
 ]
 groups = [Group(**g) for g in groups_attr]
 

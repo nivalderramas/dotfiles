@@ -92,8 +92,8 @@ def updates(bg: str, fg: str) -> list:
             **base(bg, fg),
             **iconFont(),
             offset=-1,
-            text='',
-            x=-5,
+            text='  ',
+            x=0,
         ),
         widget.CheckUpdates(
             **base(bg, fg),
@@ -102,6 +102,7 @@ def updates(bg: str, fg: str) -> list:
             colour_no_updates=fg,
             display_format='{updates} updates  ',
             distro='Arch',
+            custom_command="pacman -Qu",
             initial_text='NO updates  ',
             no_update_string='0 updates ',
             padding=0,
@@ -221,4 +222,3 @@ widgets = [
     *clock(color['magenta'], color['bg']),
     widget.Spacer(length=2),
 ]
-
