@@ -210,6 +210,7 @@ widgets = [
     sep(color['black'], offset=4, padding=4),
     *volume(color['magenta'], color['bg']),
     *updates(color['red'], color['bg']),
+    widget.Notify(),
 
     widget.Spacer(),
     window_name(None, color['fg']),
