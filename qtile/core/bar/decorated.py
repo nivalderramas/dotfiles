@@ -4,6 +4,7 @@ from libqtile.lazy import lazy
 from core.bar.utils import base, decoration, iconFont, powerline
 from extras import Clock, GroupBox, modify, TextBox, Volume, widget
 from utils import color
+from widget import Notification
 
 tags = [
     '', '', ''
@@ -211,6 +212,8 @@ widgets = [
     *volume(color['magenta'], color['bg']),
     *updates(color['red'], color['bg']),
 
+    Notification(),
+    widget.Spacer(),
     widget.Spacer(),
     window_name(None, color['fg']),
     widget.Spacer(),

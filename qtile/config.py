@@ -41,7 +41,6 @@ from core import (
     groups,
 )
 
-mod = "mod4"
 terminal = "kitty"
 
 
