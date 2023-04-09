@@ -1,7 +1,7 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
 
-mod = "mod4"
+mod = "mod1"
 terminal = "kitty"
 
 keys = [
