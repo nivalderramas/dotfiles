@@ -2,8 +2,9 @@ from libqtile.bar import CALCULATED
 from libqtile.lazy import lazy
 
 from core.bar.utils import base, decoration, iconFont, powerline
-from extras import Clock, GroupBox, modify, TextBox, Volume, widget
+from extras import Battery, Clock, GroupBox, modify, TextBox, Volume, widget
 from utils import color
+
 
 tags = [
     '', '', ''
@@ -17,6 +18,25 @@ bar = {
     'opacity': 1,
     'size': 30,
 }
+
+
+def battery(bg: str, fg: str) -> Battery:
+    return modify(
+        Battery,
+        **base(bg, fg),
+        **decoration('right'),
+        percentage_critical=0.15,
+        percentage_low=0.30,
+        text_displaytime=1,
+        fill_charge=color['magenta'],
+        fill_normal=color['success'],
+        fill_low=color['warnning'],
+        fill_critical=color['danger'],
+        border_colour=fg,
+        border_charge_colour=fg,
+        battery_width=30,
+        battery_height=15,
+    )
 
 
 def sep(fg: str, offset=0, padding=8) -> TextBox:
@@ -170,7 +190,7 @@ def disk(bg: str, fg: str) -> list:
         ),
         widget.DF(
             **base(bg, fg),
-            **decoration('right'),
+            **powerline('arrow_right'),
             format='{f} GB  ',
             padding=0,
             partition='/',
@@ -219,6 +239,7 @@ widgets = [
     *cpu(color['green'], color['bg']),
     *ram(color['yellow'], color['bg']),
     *disk(color['cyan'], color['bg']),
+    battery(color['yellow'], color['bg']),
     sep(color['black']),
     *clock(color['magenta'], color['bg']),
     widget.Spacer(length=2),

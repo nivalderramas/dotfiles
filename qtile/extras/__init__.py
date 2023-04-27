@@ -9,8 +9,10 @@ from extras.function import float_to_front
 from extras.groupbox import GroupBox
 from extras.textbox import TextBox
 from extras.volume import Volume
+from extras.battery import Battery
 
 __all__ = [
+    'Battery',
     'BorderDecoration',
     'Clock',
     'float_to_front',

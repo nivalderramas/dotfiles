@@ -2,7 +2,7 @@
   "bar": "decorated",
   "simpleBar": "simple",
   "browser": "",
-  "colorscheme": "catppuccin",
+  "colorscheme": "nord",
   "terminal": {
     "main": "",
     "floating": ""

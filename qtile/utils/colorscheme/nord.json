@@ -8,5 +8,8 @@
   "blue":    "#81A1C1",
   "magenta": "#B48EAD",
   "cyan":    "#88C0D0",
-  "white":   "#E5E9F0"
+  "white":   "#E5E9F0",
+  "success": "#22bb33",
+  "warnning": "#f0ad4e",
+  "danger":  "#bb2124"
 }
