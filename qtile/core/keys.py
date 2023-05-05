@@ -23,6 +23,11 @@ keys = [
     Key([mod], "z", lazy.spawn("firefox"), desc="open firefox"),
     Key([mod], "p", lazy.spawn(
         "rofi -show combi -combi-modes 'window,drun,run'"), desc="rofi"),
+    Key([mod, "shift"], "p", lazy.spawn(
+        "rofi -show power-menu -modi power-menu:rofi-power-menu"), desc="rofi"),
+    
+    Key([mod], "b", lazy.spawn(
+        "rofi-bluetooth"), desc="rofi"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "v", lazy.spawn("pavucontrol"), desc="Launch terminal"),
 

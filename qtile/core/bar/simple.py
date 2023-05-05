@@ -25,7 +25,7 @@ def sep(fg: str, offset=0, padding=8) -> TextBox:
         **iconFont(20),
         offset=offset,
         padding=padding,
-        text='',
+        text='*',
     )
 
 

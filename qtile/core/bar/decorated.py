@@ -2,12 +2,12 @@ from libqtile.bar import CALCULATED
 from libqtile.lazy import lazy
 
 from core.bar.utils import base, decoration, iconFont, powerline
-from extras import Battery, Clock, GroupBox, modify, TextBox, Volume, widget
+from extras import Battery, Clock, GroupBox, modify, TextBox, Volume, widget, Wifi
 from utils import color
 
 
 tags = [
-    '', '', ''
+    '󰈹', '', ''
 ]
 
 bar = {
@@ -45,7 +45,7 @@ def sep(fg: str, offset=0, padding=8) -> TextBox:
         **iconFont(),
         offset=offset,
         padding=padding,
-        text='',
+        text='}',
     )
 
 
@@ -71,7 +71,7 @@ def groups(bg: str) -> GroupBox:
             color['cyan'], color['magenta'], color['yellow'],
             color['red'], color['blue'], color['green'],
         ],
-        highlight_color=color['bg'],
+        highlight_color=['#aa0000', '#aaaa00'],
         visible_groups=['1', '2', '3'],
         highlight_method='line',
         inactive=color['black'],
@@ -225,8 +225,7 @@ def clock(bg: str, fg: str) -> list:
 widgets = [
     widget.Spacer(length=2),
     logo(color['blue'], color['bg']),
-    sep(color['black'], offset=-8),
-    groups(None),
+    groups(color['blue']),
     sep(color['black'], offset=4, padding=4),
     *volume(color['magenta'], color['bg']),
     *updates(color['red'], color['bg']),
@@ -236,11 +235,16 @@ widgets = [
     window_name(None, color['fg']),
     widget.Spacer(),
 
+    Wifi(format=" {percent:2.0%}",width=54, mouse_callbacks={'Button1': lazy.spawn('networkmanager_dmenu')}),
     *cpu(color['green'], color['bg']),
     *ram(color['yellow'], color['bg']),
     *disk(color['cyan'], color['bg']),
     battery(color['yellow'], color['bg']),
     sep(color['black']),
+    widget.LaunchBar(padding=0, text_only=True, font="Font Awesome 6 Free", fontsize=16, foreground="2e3440", progs=[
+        ("", "rofi-bluetooth", "Bluetooth"),
+        ("", "flameshot gui", "Screenshot"),
+    ]),
     *clock(color['magenta'], color['bg']),
     widget.Spacer(length=2),
 ]

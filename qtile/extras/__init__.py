@@ -10,6 +10,7 @@ from extras.groupbox import GroupBox
 from extras.textbox import TextBox
 from extras.volume import Volume
 from extras.battery import Battery
+from extras.wifi import Wifi
 
 __all__ = [
     'Battery',
@@ -23,4 +24,5 @@ __all__ = [
     'TextBox',
     'Volume',
     'widget',
+    'Wifi',
 ]
