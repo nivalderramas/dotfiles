@@ -7,10 +7,10 @@ from utils import color
 config = {
   'border_focus': color['magenta'],
   'border_normal': color['bg'],
-  'border_width': 0,
+  'border_width': 2,
   'margin': 10,
   'single_border_width': 0,
-  'single_margin': 10,
+  'single_margin': 20,
 }
 
 layouts = [

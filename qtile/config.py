@@ -30,6 +30,7 @@ from libqtile import layout, widget
 from libqtile.config import Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile import hook
+from utils import color
 
 from theme import (background_light, background_dark,
                    foreground, red, green, blue, yellow, orange, purple, colors, darks, accents)
@@ -51,8 +52,16 @@ def autostart():
     subprocess.Popen([home])
 
 
+config = {
+  'border_focus': color['magenta'],
+  'border_normal': color['bg'],
+  'border_width': 5,
+  'margin': 8,
+  'single_border_width': 0,
+  'single_margin': 0,
+}
 layouts = [
-    layout.MonadTall(),
+    layout.MonadTall(**config),
     layout.Max(),
 ]
 
