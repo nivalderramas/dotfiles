@@ -14,13 +14,8 @@ if [ "$@" ]
 then
     # the output from the selection will be the desciption.  Save that for alerts
     desc="$*"
-    echo $desc
     # Figure out what the device name is based on the description passed
     device=$(pactl list sinks|grep -C2 -F "Description: $desc"|grep Name|cut -d: -f2|xargs)
-    test="aa"
-    echo hola $test
-    echo $device
-    echo $test
     # Try to set the default to the device chosen
     echo "Setting default sink to: $device"
 
