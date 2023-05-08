@@ -109,5 +109,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias debugQtile="tail -f ~/.local/share/qtile/qtile.log"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export battery=0
 export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/qtile/scripts:$PATH"

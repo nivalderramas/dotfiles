@@ -29,7 +29,9 @@ keys = [
     Key([mod], "b", lazy.spawn(
         "rofi-bluetooth"), desc="rofi"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "v", lazy.spawn("pavucontrol"), desc="Launch terminal"),
+    Key([mod, "shift"], "v", lazy.spawn("pavucontrol"), desc="Open pavucontrol "),
+    Key([mod], "v", lazy.spawn('rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"'), desc="Rofi pick sound device"),
+    Key([mod], "w", lazy.spawn('networkmanager_dmenu'), desc="Rofi pick sound device"),
 
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),

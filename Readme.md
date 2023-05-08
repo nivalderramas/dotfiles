@@ -10,4 +10,4 @@ From aur
     `rofi-power-menu`
     `rofi-bluetooth-git`
 
-
+`sudo ln -s /home/nivalderramas/.config/dotfiles/qtile/scripts/rofi-sound-output-chooser /usr/local/bin`

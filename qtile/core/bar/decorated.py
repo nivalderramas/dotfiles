@@ -2,7 +2,8 @@ from libqtile.bar import CALCULATED
 from libqtile.lazy import lazy
 
 from core.bar.utils import base, decoration, iconFont, powerline
-from extras import Battery, Clock, GroupBox, modify, TextBox, Volume, widget, Wifi
+from extras import Battery, GroupBox, modify, TextBox, Volume, widget, Wifi
+from libqtile.widget import Clock
 from utils import color
 
 
@@ -232,19 +233,27 @@ widgets = [
     widget.Notify(),
 
     widget.Spacer(),
-    window_name(None, color['fg']),
     widget.Spacer(),
 
     Wifi(format=" {percent:2.0%}",width=54, mouse_callbacks={'Button1': lazy.spawn('networkmanager_dmenu')}),
-    *cpu(color['green'], color['bg']),
-    *ram(color['yellow'], color['bg']),
-    *disk(color['cyan'], color['bg']),
-    battery(color['yellow'], color['bg']),
-    sep(color['black']),
+    Battery(
+        percentage_critical=0.15,
+        percentage_low=0.30,
+        text_displaytime=1,
+        fill_charge=color['success'],
+        fill_normal=color['success'],
+        fill_low=color['warnning'],
+        fill_critical=color['danger'],
+        border_colour=color['black'],
+        border_charge_colour=color['success'],
+        battery_width=30,
+        battery_height=15
+        ),
     widget.LaunchBar(padding=0, text_only=True, font="Font Awesome 6 Free", fontsize=16, foreground="2e3440", progs=[
         ("", "rofi-bluetooth", "Bluetooth"),
         ("", "flameshot gui", "Screenshot"),
     ]),
-    *clock(color['magenta'], color['bg']),
+    # *clock(color['magenta'], color['bg']),
+    widget.Clock(format='  %d/%m/%y  %H:%M'),
     widget.Spacer(length=2),
 ]
