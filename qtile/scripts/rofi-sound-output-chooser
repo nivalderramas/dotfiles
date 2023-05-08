@@ -17,8 +17,6 @@ then
     # Figure out what the device name is based on the description passed
     device=$(pactl list sinks|grep -C2 -F "Description: $desc"|grep Name|cut -d: -f2|xargs)
     # Try to set the default to the device chosen
-    echo "Setting default sink to: $device"
-
     if pactl set-default-sink "$device"
     then
         # if it worked, alert the user

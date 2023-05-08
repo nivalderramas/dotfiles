@@ -1,4 +1,5 @@
 from qtile_extras.widget import UPowerWidget
+from libqtile.log_utils import logger
 
 
 class Battery(UPowerWidget):
@@ -28,8 +29,9 @@ class Battery(UPowerWidget):
         # Loop over each battery
         for battery in self.batteries:
             # Get battery energy level
-            percentage = battery["fraction"]
-
+            if 'fraction' not in battery or 'percentage' not in battery:
+                continue
+            percentage = battery.get("fraction",0)
             # Get the appropriate fill colour
             if self.charging and self.fill_charge:
                 fill = self.fill_charge
@@ -76,7 +78,7 @@ class Battery(UPowerWidget):
 
                 # Create a text box
                 layout = self.drawer.textlayout(
-                    text, self.foreground, self.font,
+                    text, self.info_foreground, self.font,
                     self.fontsize, None, wrap=False
                 )
 

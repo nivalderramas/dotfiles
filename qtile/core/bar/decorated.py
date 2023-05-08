@@ -3,7 +3,7 @@ from libqtile.lazy import lazy
 
 from core.bar.utils import base, decoration, iconFont, powerline
 from extras import Battery, GroupBox, modify, TextBox, Volume, widget, Wifi
-from libqtile.widget import Clock
+from libqtile.widget import Clock, Bluetooth
 from utils import color
 
 
@@ -57,7 +57,7 @@ def logo(bg: str, fg: str) -> TextBox:
         **decoration(),
         **iconFont(),
         mouse_callbacks={'Button1': lazy.restart()},
-        offset=4,
+        offset=0,
         padding=17,
         text='',
     )
@@ -69,10 +69,10 @@ def groups(bg: str) -> GroupBox:
         background=bg,
         borderwidth=1,
         colors=[
-            color['cyan'], color['magenta'], color['yellow'],
-            color['red'], color['blue'], color['green'],
+            color['fg'], color['fg'], color['fg'],
         ],
-        highlight_color=['#aa0000', '#aaaa00'],
+        highlight_color=bg,
+        block_highlight_text_color=[color['blue']],
         visible_groups=['1', '2', '3'],
         highlight_method='line',
         inactive=color['black'],
@@ -84,18 +84,11 @@ def groups(bg: str) -> GroupBox:
 
 def volume(bg: str, fg: str) -> list:
     return [
-        modify(
-            TextBox,
-            **base(bg, fg),
-            **decoration('left'),
-            **iconFont(),
+        TextBox(
             text='',
-            x=4,
+            x=4
         ),
-        modify(
-            Volume,
-            **base(bg, fg),
-            **powerline('arrow_right'),
+        Volume(
             commands={
                 'decrease': 'pamixer --decrease 5',
                 'increase': 'pamixer --increase 5',
@@ -103,31 +96,6 @@ def volume(bg: str, fg: str) -> list:
                 'mute': 'pamixer --toggle-mute',
             },
             update_interval=0.1,
-        ),
-    ]
-
-
-def updates(bg: str, fg: str) -> list:
-    return [
-        TextBox(
-            **base(bg, fg),
-            **iconFont(),
-            offset=-1,
-            text='  ',
-            x=0,
-        ),
-        widget.CheckUpdates(
-            **base(bg, fg),
-            **decoration('right'),
-            colour_have_updates=fg,
-            colour_no_updates=fg,
-            display_format='{updates} updates  ',
-            distro='Arch',
-            custom_command="pacman -Qu",
-            initial_text='NO updates  ',
-            no_update_string='0 updates ',
-            padding=0,
-            update_interval=3600,
         ),
     ]
 
@@ -224,36 +192,34 @@ def clock(bg: str, fg: str) -> list:
 
 
 widgets = [
+    #LEFT
     widget.Spacer(length=2),
-    logo(color['blue'], color['bg']),
-    groups(color['blue']),
-    sep(color['black'], offset=4, padding=4),
-    *volume(color['magenta'], color['bg']),
-    *updates(color['red'], color['bg']),
+    groups(color['bg']),
     widget.Notify(),
 
+    #CENTER SPACE
     widget.Spacer(),
+    logo(color['bg'], color['fg']),
     widget.Spacer(),
 
+    #RIGHT
     Wifi(format=" {percent:2.0%}",width=54, mouse_callbacks={'Button1': lazy.spawn('networkmanager_dmenu')}),
+    Bluetooth(fmt=" {}", hci='/dev_95_05_BB_21_DD_D8'),
     Battery(
         percentage_critical=0.15,
         percentage_low=0.30,
         text_displaytime=1,
+        foreground=color['black'],
+        info_foreground=color['fg'],
         fill_charge=color['success'],
-        fill_normal=color['success'],
+        fill_normal=color['fg'],
         fill_low=color['warnning'],
         fill_critical=color['danger'],
-        border_colour=color['black'],
+        border_colour=color['fg'],
         border_charge_colour=color['success'],
         battery_width=30,
         battery_height=15
         ),
-    widget.LaunchBar(padding=0, text_only=True, font="Font Awesome 6 Free", fontsize=16, foreground="2e3440", progs=[
-        ("", "rofi-bluetooth", "Bluetooth"),
-        ("", "flameshot gui", "Screenshot"),
-    ]),
-    # *clock(color['magenta'], color['bg']),
     widget.Clock(format='  %d/%m/%y  %H:%M'),
     widget.Spacer(length=2),
 ]
