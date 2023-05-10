@@ -203,6 +203,7 @@ widgets = [
     widget.Spacer(),
 
     #RIGHT
+    *volume(color['bg'],color['fg']),
     Wifi(format=" {percent:2.0%}",width=54, mouse_callbacks={'Button1': lazy.spawn('networkmanager_dmenu')}),
     Bluetooth(fmt=" {}", hci='/dev_95_05_BB_21_DD_D8'),
     Battery(
