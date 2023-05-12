@@ -23,9 +23,10 @@ class Wifi(Wlan):
             if disconnected:
                 return self.disconnected_message
 
-            return self.format.format(essid=essid, quality=quality, percent=(quality / 70))
+            return self.format.format(essid=essid, quality=quality, percent=(quality / 100))
         except EnvironmentError:
-            return "󰈁"
+            return self.format.format(essid="", quality=1, percent=1)
+            # return "󰈁"
             # logger.error(
             #     "%s: Probably your wlan device is switched off or "
             #     " otherwise not present in your system.",

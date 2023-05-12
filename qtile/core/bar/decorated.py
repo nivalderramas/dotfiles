@@ -1,3 +1,4 @@
+import os
 from libqtile.bar import CALCULATED
 from libqtile.lazy import lazy
 
@@ -20,24 +21,32 @@ bar = {
     'size': 30,
 }
 
+def check_battery_presence():
+    battery_dirs = [f for f in os.listdir('/sys/class/power_supply') if os.path.isdir(os.path.join('/sys/class/power_supply', f))]
+    battery_present = any(f.startswith('BAT') for f in battery_dirs)
+    return battery_present
 
-def battery(bg: str, fg: str) -> Battery:
-    return modify(
-        Battery,
-        **base(bg, fg),
-        **decoration('right'),
-        percentage_critical=0.15,
-        percentage_low=0.30,
-        text_displaytime=1,
-        fill_charge=color['magenta'],
-        fill_normal=color['success'],
-        fill_low=color['warnning'],
-        fill_critical=color['danger'],
-        border_colour=fg,
-        border_charge_colour=fg,
-        battery_width=30,
-        battery_height=15,
-    )
+def battery(bg: str, fg: str) -> list:
+    """ 
+    Check if there is a battery, if not return an empty list, else return the proper widget
+    """
+    # Example usage
+    if check_battery_presence():
+        return [
+            widget.BatteryIcon(
+                 theme_path='~/.config/qtile/assets/Battery/',
+                 background=bg,
+                 scale=1,
+            ),
+            widget.Battery(
+                font='JetBrains Mono Bold',
+                background=bg,
+                foreground=fg,
+                format='{percent:2.0%}',
+                fontsize=13,
+            )]
+    else:
+        return []
 
 
 def sep(fg: str, offset=0, padding=8) -> TextBox:
@@ -205,22 +214,13 @@ widgets = [
     #RIGHT
     *volume(color['bg'],color['fg']),
     Wifi(format=" {percent:2.0%}",width=54, mouse_callbacks={'Button1': lazy.spawn('networkmanager_dmenu')}),
+    widget.Spacer(
+                    length=8,
+                    background='#353446',
+                ),
+
     Bluetooth(fmt=" {}", hci='/dev_95_05_BB_21_DD_D8'),
-    Battery(
-        percentage_critical=0.15,
-        percentage_low=0.30,
-        text_displaytime=1,
-        foreground=color['black'],
-        info_foreground=color['fg'],
-        fill_charge=color['success'],
-        fill_normal=color['fg'],
-        fill_low=color['warnning'],
-        fill_critical=color['danger'],
-        border_colour=color['fg'],
-        border_charge_colour=color['success'],
-        battery_width=30,
-        battery_height=15
-        ),
+    *battery(color['bg'],color['fg']),
     widget.Clock(format='  %d/%m/%y  %H:%M'),
     widget.Spacer(length=2),
 ]
