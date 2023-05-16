@@ -10,10 +10,10 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn(
         "brightnessctl set 5%-"), desc="more brightness"),
     Key([], "XF86AudioLowerVolume", lazy.spawn(
-        "amixer sset Master playback 5%-")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle")),
+        "pamixer --decrease 5")),
+    Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn(
-        "amixer sset Master playback 5%+")),
+        "pamixer --increase 5")),
     Key([], "XF86AudioPlay", lazy.spawn("")),
     Key([], "XF86AudioStop", lazy.spawn("")),
     Key([], "XF86AudioPrev", lazy.spawn("")),
