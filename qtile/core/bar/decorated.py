@@ -212,6 +212,8 @@ widgets = [
     widget.Spacer(),
 
     #RIGHT
+    widget.Memory(measure_mem='M'),
+    widget.MemoryGraph(type='line'),
     *volume(color['bg'],color['fg']),
     Wifi(format=" {percent:2.0%}",width=54, mouse_callbacks={'Button1': lazy.spawn('networkmanager_dmenu')}),
     widget.Spacer(
