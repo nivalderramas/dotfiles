@@ -112,3 +112,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export EDITOR=nvim
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/qtile/scripts:$PATH"
+
+# Pywal support
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
