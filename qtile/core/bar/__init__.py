@@ -1,11 +1,10 @@
-from core.bar import theme
+from core.bar import decorated
+from libqtile.log_utils import logger
 
-bar, tags = theme.bar
-simpleBar, simpleTags = theme.simpleBar
+bar = decorated.mainBar
+secondBar = decorated.secondBar
 
 __all__ = [
   'bar',
-  'tags',
-  'simpleTags',
-  'simpleBar',
+  'secondBar',
 ]

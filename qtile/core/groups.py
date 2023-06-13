@@ -4,11 +4,8 @@ from typing import Callable
 from libqtile.core.manager import Qtile
 from libqtile import layout
 
-from core import bar
 from core.keys import keys, mod
 
-# Icons & Tags
-tag = [], bar.tags
 
 groups_attr = [
     {"label": "󰈹", "name": "1", },

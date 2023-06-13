@@ -5,8 +5,6 @@ from core.mouse import mouse
 from core.screens import screens
 from core.bar.utils import defaults
 
-from core import hooks
-
 widget_defaults = defaults.copy()
 extension_defaults = defaults.copy()
 
@@ -15,7 +13,6 @@ __all__ = [
   'keys',
   'floating_layout',
   'groups',
-  'hooks',
   'layouts',
   'mouse',
   'screens',

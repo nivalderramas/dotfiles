@@ -30,10 +30,9 @@ from libqtile import layout, widget
 from libqtile.config import Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile import hook
-from utils import color
+from libqtile.log_utils import logger
+from core.theme import colors
 
-from theme import (background_light, background_dark,
-                   foreground, red, green, blue, yellow, orange, purple, colors, darks, accents)
 
 from core import (
     screens,
@@ -53,8 +52,8 @@ def autostart():
 
 
 config = {
-  'border_focus': color['magenta'],
-  'border_normal': color['bg'],
+  'border_focus': colors[4],
+  'border_normal': "#afafaa",
   'border_width': 5,
   'margin': 8,
   'single_border_width': 0,
@@ -71,17 +70,6 @@ widget_defaults = dict(
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
-
-widget_separator = widget.Sep(
-    linewidth=1,
-    padding=10,
-)
-# Incase we need spacing
-dark_sep = widget.Sep(linewidth=0, padding=6,
-                      background=background_dark, foreground=background_dark)
-light_sep = widget.Sep(linewidth=0, padding=6,
-                       background=background_light,
-                       foreground=background_light)
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list

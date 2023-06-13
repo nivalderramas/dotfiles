@@ -1,7 +1,0 @@
-!/usr/bin/env bash
-
-Xephyr -br -ac -noreset -screen 1920x1080 &&
-export DISPLAY=:1 &&
-qtile -c ~/.config/qtile/config.py
-
-

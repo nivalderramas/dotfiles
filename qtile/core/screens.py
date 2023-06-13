@@ -1,18 +1,18 @@
 from libqtile.config import Screen
+from core.bar import bar, secondBar
+from libqtile.log_utils import logger
 
-from core.bar import bar, simpleBar
-from utils import config
+logger.info(bar)
+logger.info(secondBar)
 
 screens = [
     Screen(
-        wallpaper=config['wallpaper'],
         wallpaper_mode='fill',
         top=bar,
     ),
-
     Screen(
-        wallpaper=config['wallpaper'],
         wallpaper_mode='fill',
-        top=simpleBar,
+        top=secondBar,
     ),
+    
 ]

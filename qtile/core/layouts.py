@@ -1,12 +1,11 @@
 from libqtile import layout
 from libqtile.config import Match
 
-from utils import color
 
 # ---- Tiling ---------------------------- #
 config = {
-  'border_focus': color['magenta'],
-  'border_normal': color['bg'],
+  'border_focus': "#23a2a2",
+  'border_normal': "#aaa3f2",
   'border_width': 2,
   'margin': 10,
   'single_border_width': 0,
@@ -26,8 +25,8 @@ layouts = [
 
 # ---- Floating -------------------------- #
 floating_layout = layout.Floating(
-  border_focus = color['white'],
-  border_normal = color['bg'],
+  border_focus = "#23a234",
+  border_normal = "#233aaa",
   border_width = 0,
   fullscreen_border_width = 0,
 
