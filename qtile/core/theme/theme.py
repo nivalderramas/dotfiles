@@ -59,7 +59,6 @@ def load_colors(cache):
     with open(cache, 'r') as file:
         for i in range(8):
             colors.append(file.readline().strip())
-    colors.append('#ffffff')
 load_colors(cache)
 colors = secondary_pallete(colors)
 colors = sort_colors_by_brightness(colors)

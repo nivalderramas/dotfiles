@@ -8,6 +8,8 @@ from extras import Battery, GroupBox, modify, TextBox, Volume, widget, Wifi
 from libqtile.widget import Clock, Bluetooth
 from core.theme import colors
 
+colors_size = len(colors)
+
 
 
 def check_battery_presence():
@@ -42,7 +44,7 @@ def battery(bg: str, fg: str) -> list:
 def logo() -> TextBox:
     return modify(
         TextBox,
-        **base(colors[0], colors[1]),
+        **base(colors[0], colors[-1]),
         **decoration(),
         **iconFont(),
         mouse_callbacks={'Button1': lazy.restart()},
@@ -55,16 +57,13 @@ def logo() -> TextBox:
 def groups(bg: str, visible) -> GroupBox:
     return GroupBox(
         **iconFont(),
-        background=bg,
         borderwidth=1,
-        colors=[
-            colors[1], colors[8], colors[7],
-        ],
-        highlight_color=bg,
-        block_highlight_text_color=[colors[6]],
+        block_highlight_text_color=colors[-1],
         visible_groups=visible,
         highlight_method='line',
-        inactive=colors[5],
+        highlight_color=[colors[0],colors[0],colors[0],colors[0],colors[-1]],
+        inactive=colors[1],
+        active=colors[-2],
         invert=True,
         padding=12,
         rainbow=True,
