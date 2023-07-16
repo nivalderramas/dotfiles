@@ -18,6 +18,9 @@ keys = [
     Key([], "XF86AudioStop", lazy.spawn("")),
     Key([], "XF86AudioPrev", lazy.spawn("")),
     Key([], "XF86AudioNext", lazy.spawn("")),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
     Key([], "Print", lazy.spawn("flameshot gui")),
 
     Key([mod], "z", lazy.spawn("firefox"), desc="open firefox"),
@@ -25,13 +28,16 @@ keys = [
         "rofi -show combi -combi-modes 'window,drun,run'"), desc="rofi"),
     Key([mod, "shift"], "p", lazy.spawn(
         "rofi -show power-menu -modi power-menu:rofi-power-menu"), desc="rofi"),
-    
+
     Key([mod], "b", lazy.spawn(
         "rofi-bluetooth"), desc="rofi"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod, "shift"], "v", lazy.spawn("pavucontrol"), desc="Open pavucontrol "),
-    Key([mod], "v", lazy.spawn('rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"'), desc="Rofi pick sound device"),
-    Key([mod], "w", lazy.spawn('networkmanager_dmenu'), desc="Rofi pick sound device"),
+    Key([mod, "shift"], "v", lazy.spawn(
+        "pavucontrol"), desc="Open pavucontrol "),
+    Key([mod], "v", lazy.spawn('rofi -show rofi-sound -modi "rofi-sound:rofi-sound-output-chooser"'),
+        desc="Rofi pick sound device"),
+    Key([mod], "w", lazy.spawn('networkmanager_dmenu'),
+        desc="Rofi pick sound device"),
 
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -71,5 +77,6 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod, "shift"],"w", lazy.spawn('rofi -show wall -modi "wall:wallpaper-chooser.sh"')),
+    Key([mod, "shift"], "w", lazy.spawn(
+        'rofi -show wall -modi "wall:wallpaper-chooser.sh"')),
 ]

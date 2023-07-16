@@ -116,3 +116,6 @@ export PATH="$HOME/.config/qtile/scripts:$PATH"
 # Pywal support
 (cat ~/.cache/wal/sequences &)
 source ~/.cache/wal/colors-tty.sh
+export USER_DB=mongo-root
+export PASSWORD_DB=horus.mongo.2020
+alias vpnUnal="sudo openconnect vpn.unal.edu.co"
