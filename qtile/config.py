@@ -89,7 +89,7 @@ floating_layout = layout.Floating(
     ]
 )
 auto_fullscreen = True
-cursor_warp = True
+cursor_warp = False
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 

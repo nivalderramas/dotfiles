@@ -8,9 +8,9 @@ from core.keys import keys, mod
 
 
 groups_attr = [
-    {"label": "󰈹", "name": "1", },
-    {"label": "", "name": "2", },
-    {"label": "", "name": "3", },
+    {"label": "󰈹", "name": "1"},
+    {"label": "", "name": "2"},
+    {"label": "", "name": "3"},
     {"label": "", "name": "8"},
     {"label": "", "name": "9"},
     {"label": "", "name": "0"},
