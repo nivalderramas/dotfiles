@@ -24,8 +24,12 @@ keys = [
     Key([], "Print", lazy.spawn("flameshot gui")),
 
     Key([mod], "z", lazy.spawn("firefox"), desc="open firefox"),
+    Key([mod], "c", lazy.spawn("google-chrome-stable"), desc="open chrome"),
+    Key([mod], "t", lazy.spawn("telegram-desktop"), desc="open telegram"),
     Key([mod], "p", lazy.spawn(
-        "rofi -show combi -combi-modes 'window,drun,run'"), desc="rofi"),
+        "rofi -show drun"), desc="rofi launch"),
+    Key([mod], "BackSpace", lazy.spawn(
+        "rofi -show window"), desc="rofi window"),
     Key([mod, "shift"], "p", lazy.spawn(
         "rofi -show power-menu -modi power-menu:rofi-power-menu"), desc="rofi"),
 
