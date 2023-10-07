@@ -1,6 +1,6 @@
 import iwlib
 
-from libqtile.widget import  Wlan
+from libqtile.widget import Wlan
 
 
 def get_status(interface_name):
@@ -32,5 +32,3 @@ class Wifi(Wlan):
             #     " otherwise not present in your system.",
             #     self.__class__.__name__,
             # )
-
-

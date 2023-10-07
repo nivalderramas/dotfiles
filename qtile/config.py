@@ -25,12 +25,9 @@
 
 import os
 import subprocess
-from libqtile.core.manager import Qtile
-from libqtile import layout, widget
-from libqtile.config import Group, Key, Match, Screen
-from libqtile.lazy import lazy
+from libqtile import layout
+from libqtile.config import Match
 from libqtile import hook
-from libqtile.log_utils import logger
 from core.theme import colors
 
 
