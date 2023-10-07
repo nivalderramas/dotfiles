@@ -14,10 +14,6 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn(
         "pamixer --increase 5")),
-    Key([], "XF86AudioPlay", lazy.spawn("")),
-    Key([], "XF86AudioStop", lazy.spawn("")),
-    Key([], "XF86AudioPrev", lazy.spawn("")),
-    Key([], "XF86AudioNext", lazy.spawn("")),
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),

@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias code="flatpak run com.visualstudio.code ."
+# alias code="flatpak run com.visualstudio.code ."
 alias sshTesting="ssh ubuntu@34.197.208.27 -L 27018:127.0.0.1:27017 -i ~/dev/horus/horus_testing.pem"
 alias r="ranger"
 
