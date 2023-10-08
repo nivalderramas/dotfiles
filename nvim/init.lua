@@ -84,7 +84,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      -- { 'j-hui/fidget.nvim', tag = "legacy", event = "LspAttach", opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -143,10 +143,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = 'ibl',
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
