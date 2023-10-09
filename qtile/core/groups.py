@@ -11,6 +11,7 @@ groups_attr = [
     {"label": "󰈹", "name": "1"},
     {"label": "", "name": "2"},
     {"label": "", "name": "3"},
+    {"label": "", "name": "4"},
     {"label": "", "name": "8"},
     {"label": "", "name": "9"},
     {"label": "", "name": "0"},
@@ -24,7 +25,7 @@ def go_to_group(name: str) -> Callable:
             qtile.groups_map[name].cmd_toscreen()
             return
 
-        if name in '123':
+        if name in '1234':
             qtile.focus_screen(0)
             qtile.groups_map[name].cmd_toscreen()
         else:

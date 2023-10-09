@@ -120,7 +120,7 @@ def volume(bg: str, fg: str) -> list:
 widgets = [
     # LEFT
     widget.Spacer(length=2),
-    groups(colors[3], ['1', '2', '3']),
+    groups(colors[3], ['1', '2', '3', '4']),
     widget.Notify(),
 
     # CENTER SPACE
