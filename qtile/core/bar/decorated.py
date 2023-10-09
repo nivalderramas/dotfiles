@@ -29,7 +29,7 @@ def scale_font_size_for_4k_monitor(font_size):
     Returns:
         int: The scaled font size.
     """
-    target_dpi = 92  # DPI for a 4K monitor (27-inch)
+    target_dpi = 75  # DPI for a 4K monitor (27-inch)
     if check_battery_presence():
         target_dpi = 45  # DPI for a normal monitor
     default_dpi = 60
