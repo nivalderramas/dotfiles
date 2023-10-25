@@ -121,3 +121,5 @@ export PASSWORD_DB=horus.mongo.2020
 alias vpnUnal="sudo openconnect vpn.unal.edu.co"
 export GOBIN=$HOME/go/bin
 export PATH=$PATH:/$GOBIN
+export AWS_PROFILE=nvalderama_profile
+export AWS_REGION=us-east-1

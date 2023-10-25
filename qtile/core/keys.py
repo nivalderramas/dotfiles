@@ -24,6 +24,8 @@ keys = [
     Key([mod], "t", lazy.spawn("telegram-desktop"), desc="open telegram"),
     Key([mod], "p", lazy.spawn(
         "rofi -show drun"), desc="rofi launch"),
+    Key([mod], "e", lazy.spawn(
+        "rofimoji"), desc="launch rofimoji"),
     Key([mod], "BackSpace", lazy.spawn(
         "rofi -show window"), desc="rofi window"),
     Key([mod, "shift"], "p", lazy.spawn(
