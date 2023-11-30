@@ -1,3 +1,4 @@
+--
 --[[
 
 =====================================================================
@@ -118,9 +119,9 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
   },
   {
-    'shaunsingh/nord.nvim',
+    'navarasu/onedark.nvim',
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'warmer'
     end,
   },
 
@@ -131,7 +132,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'nord',
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },

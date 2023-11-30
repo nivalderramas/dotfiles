@@ -114,12 +114,15 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/qtile/scripts:$PATH"
 
 # Pywal support
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+# (cat ~/.cache/wal/sequences &)
+# source ~/.cache/wal/colors-tty.sh
 export USER_DB=mongo-root
 export PASSWORD_DB=horus.mongo.2020
 alias vpnUnal="sudo openconnect vpn.unal.edu.co"
 export GOBIN=$HOME/go/bin
+export GOPATH="$HOME/go"
 export PATH=$PATH:/$GOBIN
+#export GOROOT="/usr/local/go"
+# export GOBIN="$GOPATH/bin"
 export AWS_PROFILE=nvalderama_profile
 export AWS_REGION=us-east-1
