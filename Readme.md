@@ -10,4 +10,7 @@ From aur
     `rofi-power-menu`
     `rofi-bluetooth-git`
 
+# Compositor
+To enable animations use this [picom fork](https://github.com/fdev31/picom/tree/next)
+
 `sudo ln -s /home/nivalderramas/.config/dotfiles/qtile/scripts/rofi-sound-output-chooser /usr/local/bin`

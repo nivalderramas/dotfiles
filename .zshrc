@@ -126,3 +126,4 @@ export PATH=$PATH:/$GOBIN
 # export GOBIN="$GOPATH/bin"
 export AWS_PROFILE=nvalderama_profile
 export AWS_REGION=us-east-1
+export DOWNLOAD_FOLDER=/home/nivalderramas/go/bin/
