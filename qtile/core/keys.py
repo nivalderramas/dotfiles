@@ -1,6 +1,8 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
 
+
+scratchpad_name = "scratchpad"
 mod = "mod4"
 terminal = "kitty"
 
@@ -82,5 +84,6 @@ keys = [
     Key([mod, "shift"], "w", lazy.spawn(
         'rofi -show wall -modi "wall:wallpaper-chooser.sh"')),
     Key([mod], "left", lazy.screen.prev_group()),
-    Key([mod], "right", lazy.screen.next_group())
+    Key([mod], "right", lazy.screen.next_group()),
+    Key([mod], "Escape", lazy.group[scratchpad_name].hide_all())
 ]

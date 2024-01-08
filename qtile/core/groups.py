@@ -93,5 +93,3 @@ groups.append(
 )
 
 keys.extend([d["trigger"] for d in scratchpad_items])
-
-# Key(["mod"], "r", lazy.group[scratchpad_name].dropdown_toggle())
