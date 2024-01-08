@@ -81,4 +81,6 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "w", lazy.spawn(
         'rofi -show wall -modi "wall:wallpaper-chooser.sh"')),
+    Key([mod], "left", lazy.screen.prev_group()),
+    Key([mod], "right", lazy.screen.next_group())
 ]

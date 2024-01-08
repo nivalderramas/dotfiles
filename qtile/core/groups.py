@@ -1,8 +1,7 @@
-from libqtile.config import Group, Key
+from libqtile.config import Group, ScratchPad, DropDown, Key
 from libqtile.lazy import lazy
 from typing import Callable
 from libqtile.core.manager import Qtile
-from libqtile import layout
 
 from core.keys import keys, mod
 
@@ -17,21 +16,22 @@ groups_attr = [
     {"label": "", "name": "9"},
     {"label": "", "name": "0"},
 ]
+
 groups = [Group(**g) for g in groups_attr]
 
 
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
         if len(qtile.screens) == 1:
-            qtile.groups_map[name].cmd_toscreen()
+            qtile.groups_map[name].toscreen()
             return
 
         if name in '12345':
             qtile.focus_screen(0)
-            qtile.groups_map[name].cmd_toscreen()
+            qtile.groups_map[name].toscreen()
         else:
             qtile.focus_screen(1)
-            qtile.groups_map[name].cmd_toscreen()
+            qtile.groups_map[name].toscreen()
 
     return _inner
 
@@ -41,3 +41,57 @@ for i in groups:
     keys.append(Key([mod, "shift"],
                     i.name, lazy.window.togroup(i.name),
                     desc="move focused window to group {}".format(i.name)))
+
+# Configure Scratchpad
+
+scratchpad_name = "scratchpad"
+python_dropdown = "python"
+kitty_dropdown = "kitty"
+file_mngr_dropdown = "file_mngr"
+qtile_debugger_dropdown = "qtile_debugger"
+
+
+logs_path = "/home/nivalderramas/.local/share/qtile/qtile.log"
+logs_cmd = "kitty --hold tail -f {logs_path}"
+
+scratchpad_items = [
+    {
+        "item": DropDown(
+            kitty_dropdown,
+            "kitty"
+        ),
+        "trigger": Key(["control"], "1", lazy.group[scratchpad_name].dropdown_toggle(kitty_dropdown))
+    },
+    {
+        "item": DropDown(
+            python_dropdown,
+            "kitty python"
+        ),
+        "trigger": Key(["control"], "2", lazy.group[scratchpad_name].dropdown_toggle(python_dropdown))
+    },
+    {
+        "item": DropDown(
+            file_mngr_dropdown,
+            "kitty ranger"
+        ),
+        "trigger": Key(["control"], "3", lazy.group[scratchpad_name].dropdown_toggle(file_mngr_dropdown))
+    },
+    {
+        "item": DropDown(
+            qtile_debugger_dropdown,
+            logs_cmd
+        ),
+        "trigger": Key(["control"], "4",
+                       lazy.group[scratchpad_name].dropdown_toggle(
+                           qtile_debugger_dropdown)
+                       )
+    },
+]
+
+groups.append(
+    ScratchPad(scratchpad_name, [d["item"] for d in scratchpad_items])
+)
+
+keys.extend([d["trigger"] for d in scratchpad_items])
+
+# Key(["mod"], "r", lazy.group[scratchpad_name].dropdown_toggle())
