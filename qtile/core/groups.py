@@ -47,7 +47,7 @@ for i in groups:
 scratchpad_name = "scratchpad"
 python_dropdown = "python"
 kitty_dropdown = "kitty"
-file_mngr_dropdown = "file_mngr"
+telegram_dropdown = "telegram"
 qtile_debugger_dropdown = "qtile_debugger"
 
 
@@ -71,20 +71,10 @@ scratchpad_items = [
     },
     {
         "item": DropDown(
-            file_mngr_dropdown,
-            "kitty ranger"
+            telegram_dropdown,
+            "telegram-desktop"
         ),
-        "trigger": Key(["control"], "3", lazy.group[scratchpad_name].dropdown_toggle(file_mngr_dropdown))
-    },
-    {
-        "item": DropDown(
-            qtile_debugger_dropdown,
-            logs_cmd
-        ),
-        "trigger": Key(["control"], "4",
-                       lazy.group[scratchpad_name].dropdown_toggle(
-                           qtile_debugger_dropdown)
-                       )
+        "trigger": Key(["control"], "3", lazy.group[scratchpad_name].dropdown_toggle(telegram_dropdown))
     },
 ]
 
