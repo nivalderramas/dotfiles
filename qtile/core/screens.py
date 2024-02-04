@@ -1,6 +1,6 @@
 import os
 from libqtile.config import Screen
-from core.bar import bar, secondBar
+from core.bar import mainBar, secondBar
 from libqtile.log_utils import logger
 
 
@@ -34,7 +34,7 @@ def scale_font_size_for_4k_monitor(font_size):
 screens = [
     Screen(
         wallpaper_mode='fill',
-        top=bar,
+        top=mainBar,
         x=600,
         y=200,
         width=300,

@@ -1,9 +1,8 @@
-import os
 from libqtile import bar
 from libqtile.lazy import lazy
 # from libqtile.log_utils import logger
 
-from core.bar.utils import base, decoration, iconFont
+from core.bar.utils import base, decoration, iconFont, check_battery_presence, scale_font_size
 from extras import GroupBox, modify, TextBox, Volume, widget, Wifi
 from libqtile.widget import Clock, Bluetooth
 from core.theme import colors
@@ -11,36 +10,7 @@ from core.theme import colors
 colors_size = len(colors)
 icons_fontsize = 18
 
-
-def check_battery_presence():
-    battery_dirs = [f for f in os.listdir(
-        '/sys/class/power_supply') if os.path.isdir(os.path.join('/sys/class/power_supply', f))]
-    battery_present = any(f.startswith('BAT') for f in battery_dirs)
-    return battery_present
-
-
-def scale_font_size_for_4k_monitor(font_size):
-    """
-    Scale the font size for a 4K monitor (27-inch) from the default DPI (1080).
-
-    Args:
-        font_size (int): The font size in points.
-
-    Returns:
-        int: The scaled font size.
-    """
-    target_dpi = 75  # DPI for a 4K monitor (27-inch)
-    if check_battery_presence():
-        target_dpi = 45  # DPI for a normal monitor
-    default_dpi = 60
-
-    scale_factor = target_dpi / default_dpi
-    scaled_font_size = int(font_size * scale_factor)
-    return scaled_font_size
-
-
-# Replace with your desired font size in points
-font_size = scale_font_size_for_4k_monitor(20)
+font_size = scale_font_size(20)
 
 
 def battery(bg: str, fg: str) -> list:
@@ -120,8 +90,7 @@ def volume(bg: str, fg: str) -> list:
 widgets = [
     # LEFT
     widget.Spacer(length=2),
-    groups(colors[3], ['1', '2', '3', '4','5']),
-    widget.Notify(),
+    groups(colors[3], ['1', '2', '3', '4', '5']),
 
     # CENTER SPACE
     widget.Spacer(),
@@ -130,11 +99,11 @@ widgets = [
 
     # RIGHT
     widget.Memory(measure_mem='G', fontsize=font_size),
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
     widget.MemoryGraph(type='line', fontsize=font_size),
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
     *volume(colors[4], colors[1]),
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
     Wifi(format=" {percent:2.0%}", fontsize=font_size,
          mouse_callbacks={
              'Button1': lazy.spawn('networkmanager_dmenu')}),
@@ -143,20 +112,19 @@ widgets = [
     #     background='#353446',
     # ),
 
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
     Bluetooth(fmt=" {}", hci='/dev_95_05_BB_21_DD_D8', fontsize=font_size),
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
     *battery(colors[2], colors[5]),
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
     Clock(format='  %d/%m/%y  %H:%M', fontsize=font_size),
-    widget.Spacer(length=scale_font_size_for_4k_monitor(10)),
+    widget.Spacer(length=scale_font_size(10)),
 ]
 
 widgets_secondary_bar = [
     # LEFT
     widget.Spacer(length=2),
     groups(colors[3], ['8', '9', '0']),
-    widget.Notify(),
 
     # CENTER SPACE
     widget.Spacer(),
