@@ -102,7 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias code="flatpak run com.visualstudio.code ."
-alias sshTesting="ssh ubuntu@34.197.208.27 -L 27018:127.0.0.1:27017 -i ~/dev/horus/horus_testing.pem"
 alias r="ranger"
 
 export NVM_DIR="$HOME/.nvm"
@@ -117,8 +116,6 @@ export PATH="$HOME/.config/qtile/scripts:$PATH"
 # Pywal support
 # (cat ~/.cache/wal/sequences &)
 # source ~/.cache/wal/colors-tty.sh
-export USER_DB=mongo-root
-export PASSWORD_DB=horus.mongo.2020
 alias vpnUnal="sudo openconnect vpn.unal.edu.co"
 export GOBIN=$HOME/go/bin
 export GOPATH="$HOME/go"
