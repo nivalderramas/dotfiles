@@ -23,20 +23,48 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
-import subprocess
-from libqtile import layout
-from libqtile.config import Match
-from libqtile import hook
-from core.theme import colors
-
-
 from core import (
     screens,
     keys,
     mouse,
     groups,
 )
+import os
+import subprocess
+import re
+from libqtile import layout, qtile
+from libqtile.config import Match
+from libqtile import hook
+from core.theme import colors
+from libqtile.log_utils import logger
+
+
+log_level = "INFO"
+systemErrorTitle = "SYSTEM ERROR"
+systemInfoTitle = "SYSTEM INFO"
+
+
+def sendNotification(title, msj):
+    subprocess.run(["notify-send", title, msj])
+
+
+valid_log_levels = [
+    'CRITICAL',
+    'FATAL',
+    'ERROR',
+    'WARN',
+    'WARNING',
+    'INFO',
+    'DEBUG',
+    'NOTSET'
+]
+
+
+logger.setLevel(log_level)
+sendNotification(systemInfoTitle, f"Log level: {log_level}")
+
+
+# This must be loeaded so variables are available
 
 mod = "mod4"
 terminal = "kitty"
@@ -49,12 +77,12 @@ def autostart():
 
 
 config = {
-  'border_focus': colors[4],
-  'border_normal': "#afafaa",
-  'border_width': 4,
-  'margin': 10,
-  'single_border_width': 4,
-  'single_margin': 10,
+    'border_focus': colors[4],
+    'border_normal': "#afafaa",
+    'border_width': 4,
+    'margin': 10,
+    'single_border_width': 4,
+    'single_margin': 10,
 }
 layouts = [
     layout.MonadTall(**config),
@@ -74,18 +102,6 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
 auto_fullscreen = True
 cursor_warp = False
 focus_on_window_activation = "smart"
