@@ -5,4 +5,3 @@ setxkbmap latam &
 playerctld daemon &
 picom &
 wal -R &
-dunst &
