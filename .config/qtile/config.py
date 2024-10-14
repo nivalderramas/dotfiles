@@ -84,6 +84,7 @@ config = {
     'single_border_width': 4,
     'single_margin': 10,
 }
+
 layouts = [
     layout.MonadTall(**config),
     layout.Max(),
