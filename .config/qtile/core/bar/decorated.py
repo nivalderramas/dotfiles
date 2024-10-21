@@ -118,6 +118,8 @@ widgets = [
     *battery(colors[2], colors[5]),
     widget.Spacer(length=scale_font_size(10)),
     Clock(format='  %d/%m/%y  %H:%M', fontsize=font_size),
+    widget.Spacer(length=2),
+    widget.Systray(),
     widget.Spacer(length=scale_font_size(10)),
 ]
 

@@ -5,3 +5,5 @@ setxkbmap latam &
 playerctld daemon &
 picom &
 wal -R &
+export PATH="$PATH:$HOME/.config/qtile/scripts" &
+vdu_controls &
