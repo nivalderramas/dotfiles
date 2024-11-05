@@ -124,7 +124,7 @@ export PATH=$PATH:/$GOBIN
 # export GOBIN="$GOPATH/bin"
 export AWS_PROFILE=nvalderama_profile
 export AWS_REGION=us-east-1
-export DOWNLOAD_FOLDER=/home/nivalderramas/go/bin/
+export DOWNLOAD_FOLDER=$HOME/go/bin/
 
 # TRUORA
 alias setprod='export AWS_PROFILE=production'
@@ -148,4 +148,8 @@ eval "$(starship init zsh)"
 
 alias cdStg="cd terraform/deploy/envs/staging"
 alias cdProd="cd terraform/deploy/envs/production"
-alias config='/usr/bin/git --git-dir=/home/nivalderramas/.cfg/ --work-tree=/home/nivalderramas'
+
+#alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config() {
+    /usr/bin/git --git-dir="$HOME/.cfg/" --work-tree="$HOME" "$@"
+}

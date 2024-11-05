@@ -1,4 +1,6 @@
-~/.screenlayout/leftVerticalScaled.sh &
+export "PATH=$PATH:$HOME/.config/qtile/scripts"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/qtile/scripts:$PATH"
+~/.screenlayout/leftVerticalScaled.sh
 dunst &
-sleep 0.3 &
-export PATH=$PATH:$HOME/.config/qtile/scripts &
+sleep 0.3
