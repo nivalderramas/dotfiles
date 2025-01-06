@@ -127,27 +127,6 @@ widgets_secondary_bar = [
     # LEFT
     widget.Spacer(length=2),
     groups(colors[3], ['8', '9', '0']),
-
-    # CENTER SPACE
-    widget.Spacer(),
-    logo(),
-    widget.Spacer(),
-
-    # RIGHT
-    widget.Memory(measure_mem='M'),
-    widget.MemoryGraph(type='line'),
-    *volume(colors[4], colors[1]),
-    Wifi(format=" {percent:2.0%}", width=54, mouse_callbacks={
-         'Button1': lazy.spawn('networkmanager_dmenu')}),
-    widget.Spacer(
-        length=8,
-        background='#353446',
-    ),
-
-    Bluetooth(fmt=" {}", hci='/dev_95_05_BB_21_DD_D8'),
-    *battery(colors[2], colors[5]),
-    Clock(format='  %d/%m/%y  %H:%M'),
-    widget.Spacer(length=2),
 ]
 
 bar_config = {
