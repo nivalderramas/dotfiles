@@ -34,7 +34,9 @@ keys = [
         "rofi -show power-menu -modi power-menu:rofi-power-menu"), desc="rofi"),
 
     Key([mod], "b", lazy.spawn(
-        "rofi-bluetooth"), desc="rofi"),
+        "rofi-bluetooth"), desc="rofi bluetooth"),
+    Key([mod, "shift"], "b", lazy.spawn(
+        "blueman-manager"), desc="bluetooth manager"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod, "shift"], "v", lazy.spawn(
         "pavucontrol"), desc="Open pavucontrol "),

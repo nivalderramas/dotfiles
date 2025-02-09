@@ -32,5 +32,7 @@ floating_layout = layout.Floating(
 
     float_rules=[
         *layout.Floating.default_float_rules,
+         # Telegram Media Viewer
+        Match(wm_class="TelegramDesktop", title="Media viewer"),
     ],
 )

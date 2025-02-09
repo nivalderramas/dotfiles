@@ -132,10 +132,10 @@ widgets_secondary_bar = [
 bar_config = {
     'background': colors[0],
     'border_color': colors[1],
-    'border_width': 4,
-    'margin': [5, 5, 5, 5],
-    'opacity': 0.9,
-    'size': 30,
+    'border_width': 0,
+    'margin': [0, 0, 0, 0],
+    'opacity': 0.7,
+    'size': 40,
 }
 
 
